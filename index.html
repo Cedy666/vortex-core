@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VORTEX CORE — Elite Strategy & Radical Execution</title>
+  <style>
+    :root {
+      --blue: #0066FF;
+      --orange: #FF6600;
+      --black: #000000;
+      --dark: #0a0a0a;
+      --white: #FFFFFF;
+      --gray: #F5F5F5;
+      --mid: #888888;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-top: 52px;
+    }
+
+    /* ─── STICKY NAV ─── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--dark);
+      border-bottom: 2px solid var(--orange);
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+    .nav-logo {
+      font-family: 'Courier New', monospace;
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-lang {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid #333;
+      padding: 4px 2px;
+    }
+    .lang-btn {
+      font-family: 'Courier New', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 8px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #555;
+      transition: color 0.2s, background 0.2s;
+    }
+    .lang-btn.active {
+      background: var(--blue);
+      color: var(--white);
+    }
+    .lang-btn.disabled {
+      cursor: default;
+      color: #333;
+      position: relative;
+    }
+    .soon-badge {
+      font-family: 'Courier New', monospace;
+      font-size: 8px;
+      color: var(--orange);
+      margin-left: 2px;
+      vertical-align: super;
+    }
+    .nav-cta {
+      font-family: 'Courier New', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--black);
+      border: 1px solid var(--orange);
+      padding: 7px 14px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .nav-cta:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    /* ─── RARITY BAR ─── */
+    .rarity-bar {
+      background: var(--blue);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 12px;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .rarity-bar em {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--dark);
+      color: var(--white);
+      padding: 64px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--orange));
+    }
+    .hero .sys-tag {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: var(--blue);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Courier New', monospace;
+      font-size: clamp(52px, 15vw, 110px);
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -2px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .hero h1 .accent { color: var(--orange); }
+    .hero .sub-head {
+      font-family: 'Courier New', monospace;
+      font-size: clamp(12px, 2.5vw, 15px);
+      color: var(--mid);
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+    .hero .rule {
+      font-size: clamp(13px, 2.5vw, 16px);
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.5;
+    }
+    .hero .rule strong {
+      color: var(--white);
+      font-style: normal;
+    }
+    .btn-hero {
+      display: inline-block;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--black);
+      border: 2px solid var(--orange);
+      padding: 18px 36px;
+      text-decoration: none;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .btn-hero:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    /* ─── MANIFESTO ─── */
+    .manifesto {
+      background: var(--gray);
+      padding: 64px 24px;
+    }
+    .manifesto-inner {
+      max-width: 660px;
+      margin: 0 auto;
+    }
+    .section-tag {
+      display: block;
+      font-family: 'Courier New', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .manifesto h2 {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: var(--black);
+    }
+    .manifesto p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .manifesto p strong { color: var(--black); }
+    .quote-block {
+      border-left: 4px solid var(--orange);
+      background: var(--white);
+      padding: 20px 24px;
+      margin: 32px 0 0;
+      font-size: clamp(16px, 3vw, 20px);
+      font-weight: 800;
+      line-height: 1.3;
+      color: var(--black);
+    }
+
+    /* ─── LEVELS ─── */
+    .levels {
+      background: var(--white);
+      padding: 64px 24px;
+    }
+    .levels-inner {
+      max-width: 660px;
+      margin: 0 auto;
+    }
+    .levels h2 {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 800;
+      margin-bottom: 32px;
+      color: var(--black);
+    }
+    .level-card {
+      border: 1px solid #E0E0E0;
+      padding: 28px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .level-card.featured {
+      border-color: var(--blue);
+      border-width: 2px;
+    }
+    .feat-badge {
+      position: absolute;
+      top: -1px; right: 20px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      font-family: 'Courier New', monospace;
+    }
+    .level-num {
+      font-family: 'Courier New', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .level-name {
+      font-family: 'Courier New', monospace;
+      font-size: clamp(18px, 4vw, 24px);
+      font-weight: 900;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+    .level-price {
+      font-size: clamp(26px, 5vw, 34px);
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .level-price .period {
+      font-size: 14px;
+      color: var(--mid);
+      font-weight: 400;
+    }
+    .level-price .ugx-label {
+      font-size: 14px;
+      color: var(--mid);
+      font-weight: 400;
+    }
+    .level-desc {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+    .level-deliverable {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ─── GUARANTEE ─── */
+    .guarantee {
+      background: var(--dark);
+      color: var(--white);
+      padding: 40px 24px;
+    }
+    .guarantee-inner {
+      max-width: 660px;
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .g-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .g-title {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .g-text {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.65;
+    }
+    .g-text strong { color: var(--white); }
+
+    /* ─── BLENDER ─── */
+    .blender {
+      background: var(--white);
+      padding: 64px 24px;
+      border-top: 1px solid #E8E8E8;
+    }
+    .blender-inner {
+      max-width: 660px;
+      margin: 0 auto;
+    }
+    .blender h2 {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .blender .total {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--mid);
+      letter-spacing: 2px;
+      margin-bottom: 40px;
+    }
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid #F0F0F0;
+      align-items: flex-start;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: 'Courier New', monospace;
+      font-size: 42px;
+      font-weight: 900;
+      color: #E8E8E8;
+      line-height: 1;
+      min-width: 52px;
+      text-align: right;
+    }
+    .step-body {}
+    .step-title {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .step-time {
+      font-size: 11px;
+      color: var(--mid);
+      margin-bottom: 8px;
+      font-family: 'Courier New', monospace;
+    }
+    .step-desc {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.65;
+    }
+    .time-bar {
+      margin-top: 32px;
+      background: var(--black);
+      color: var(--orange);
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* ─── SUBMISSION ─── */
+    .submission {
+      background: var(--gray);
+      padding: 64px 24px;
+    }
+    .submission-inner {
+      max-width: 660px;
+      margin: 0 auto;
+    }
+    .submission h2 {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .sub-intro {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 32px;
+      padding: 16px 20px;
+      border-left: 4px solid var(--blue);
+      background: var(--white);
+      line-height: 1.7;
+    }
+    .sub-intro strong { color: var(--black); }
+    .field-group { margin-bottom: 20px; }
+    .field-label {
+      display: block;
+      font-family: 'Courier New', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+    .field-input,
+    .field-textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #DDDDD8;
+      background: var(--white);
+      color: var(--black);
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+    .field-input:focus,
+    .field-textarea:focus { border-color: var(--blue); }
+    .field-textarea { resize: vertical; min-height: 80px; }
+    ::placeholder { color: #AAAAAA; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 22px;
+      background: var(--black);
+      color: var(--white);
+      border: 2px solid var(--orange);
+      font-family: 'Courier New', monospace;
+      font-size: clamp(13px, 3vw, 16px);
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      outline: none;
+      margin-top: 12px;
+      transition: border-color 0.25s, color 0.25s;
+      -webkit-appearance: none;
+    }
+    .btn-submit:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+    .sub-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--mid);
+      margin-top: 16px;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 1px;
+    }
+
+    /* ─── SOCIAL PROOF PLACEHOLDER ─── */
+    .social {
+      background: var(--white);
+      padding: 48px 24px;
+      border-top: 1px solid #E8E8E8;
+    }
+    .social-inner {
+      max-width: 660px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .social .section-tag { display: block; text-align: center; margin-bottom: 24px; }
+    .testimonials { display: flex; flex-direction: column; gap: 16px; }
+    .testi {
+      background: var(--gray);
+      padding: 20px 24px;
+      text-align: left;
+      border-left: 3px solid var(--orange);
+    }
+    .testi-text { font-size: 14px; color: #333; line-height: 1.65; margin-bottom: 10px; font-style: italic; }
+    .testi-author { font-family: 'Courier New', monospace; font-size: 11px; color: var(--orange); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      color: #444;
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 3px solid var(--orange);
+    }
+    footer .f-logo {
+      font-family: 'Courier New', monospace;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    footer .f-logo span { color: var(--orange); }
+    footer .f-tagline {
+      font-family: 'Courier New', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    footer .f-contact {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 4px;
+    }
+    footer .f-contact a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+    footer .f-legal {
+      font-size: 11px;
+      color: #333;
+      margin-top: 20px;
+      letter-spacing: 1px;
+    }
+
+    /* ─── ALERT/MODAL ─── */
+    .alert-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .alert-overlay.visible { display: flex; }
+    .alert-box {
+      background: var(--white);
+      max-width: 400px;
+      width: 100%;
+      padding: 32px;
+      border-top: 4px solid var(--orange);
+    }
+    .alert-title {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .alert-msg { font-size: 14px; color: #333; line-height: 1.65; margin-bottom: 24px; }
+    .alert-close {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      padding: 12px 24px;
+      cursor: pointer;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (min-width: 600px) {
+      .testimonials { flex-direction: row; }
+      .testi { flex: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar">
+    <a href="#" class="nav-logo">VORTEX <span>CORE</span></a>
+    <div class="nav-right">
+      <div class="nav-lang">
+        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn disabled" id="btn-fr" title="French version coming soon">FR<span class="soon-badge">soon</span></button>
+      </div>
+      <a href="#submit" class="nav-cta">&#9889; Submit</a>
+    </div>
+  </nav>
+
+  <!-- Alert Modal -->
+  <div class="alert-overlay" id="alertOverlay">
+    <div class="alert-box">
+      <div class="alert-title">&#9889; Access Denied</div>
+      <div class="alert-msg" id="alertMsg">Please complete all fields. Incomplete submissions are not processed.</div>
+      <button class="alert-close" onclick="closeAlert()">[ Understood ]</button>
+    </div>
+  </div>
+
+  <!-- Rarity Bar -->
+  <div class="rarity-bar">
+    &#9889; Access limited &mdash; <em>5 files per month</em> &mdash; Slots available: 3/5
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="sys-tag">&gt;&gt; VORTEX_SYSTEM_LOG // INITIALIZING...</div>
+    <h1>VORTEX<br><span class="accent">CORE</span></h1>
+    <p class="sub-head">Elite Strategy &amp; Radical Execution</p>
+    <p class="rule"><strong>Transform your chaos into a commercial weapon</strong><br>for those the big firms ignore.</p>
+    <a href="#submit" class="btn-hero">[ Submit to the Blender ]</a>
+  </div>
+
+  <!-- Manifesto -->
+  <div class="manifesto">
+    <div class="manifesto-inner">
+      <span class="section-tag">&gt;&gt; Rapid Diagnostic</span>
+      <h2>You don't lack talent.<br>You lack clarity.</h2>
+      <p>Most consultants don't operate in your context. The constraint is not the obstacle — <strong>it is your positioning.</strong> An entrepreneur who sells elite strategy with a smartphone and WhatsApp proves exactly what he sells: doing more with less.</p>
+      <p>For your target, the absence of strategy is not an inconvenience — it is a <strong>real, daily financial risk.</strong></p>
+      <div class="quote-block">
+        "The only precision tool accessible to those the big firms ignore."
+      </div>
+    </div>
+  </div>
+
+  <!-- Levels -->
+  <div class="levels">
+    <div class="levels-inner">
+      <span class="section-tag">&gt;&gt; Access Levels</span>
+      <h2>Choose your protocol</h2>
+
+      <div class="level-card">
+        <div class="level-num">Level 01 &mdash; Scan Rapide</div>
+        <div class="level-name">Quick Scan</div>
+        <div class="level-price">30,000 <span class="ugx-label">UGX</span> <span class="period">/ 24h</span></div>
+        <div class="level-desc">Validation or invalidation of your concept + 3 immediate actions for this week. No fluff, no delay.</div>
+        <div class="level-deliverable">&#8594; Deliverable: structured WhatsApp message</div>
+      </div>
+
+      <div class="level-card featured">
+        <div class="feat-badge">Recommended</div>
+        <div class="level-num">Level 02 &mdash; Blender Complet</div>
+        <div class="level-name">Full Blender</div>
+        <div class="level-price">200,000 <span class="ugx-label">UGX</span> <span class="period">/ 48&ndash;72h</span></div>
+        <div class="level-desc">Complete strategy, revenue model, 30-day action plan. Nothing is left to chance. This is where the transformation happens.</div>
+        <div class="level-deliverable">&#8594; Deliverable: PDF + 20-min WhatsApp session</div>
+      </div>
+
+      <div class="level-card">
+        <div class="level-num">Level 03 &mdash; Op&eacute;ration Continue</div>
+        <div class="level-name">Continuous Operation</div>
+        <div class="level-price">300,000 <span class="ugx-label">UGX</span> <span class="period">/ month</span></div>
+        <div class="level-desc">Monthly retainer: 2 Quick Scans + 1 Full Blender. Your strategic pipeline, always active.</div>
+        <div class="level-deliverable">&#8594; Deliverable: dedicated WhatsApp subscription</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Guarantee -->
+  <div class="guarantee">
+    <div class="guarantee-inner">
+      <div class="g-icon">&#9889;</div>
+      <div>
+        <div class="g-title">Tactical Guarantee</div>
+        <div class="g-text">If after applying the first 3 actions for 2 weeks you see <strong>no result</strong>, we redo the Blender — free of charge. Payment: 50% upfront, 50% on delivery.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blender Process -->
+  <div class="blender">
+    <div class="blender-inner">
+      <span class="section-tag">&gt;&gt; The Protocol</span>
+      <h2>The Blender — 4 steps.</h2>
+      <div class="total">Total time per file: 35 minutes maximum.</div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <div class="step-title">Intake</div>
+            <div class="step-time">5 min &mdash; Zero AI</div>
+            <div class="step-desc">You submit your file. We identify the 3 critical data points: the real problem, the real target, the available resource.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <div class="step-title">Master Prompt</div>
+            <div class="step-time">10 min &mdash; AI Analysis</div>
+            <div class="step-desc">Concept validation or invalidation. Exact priority client identification. The 3 first actions this week. The main trap to avoid.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <div class="step-title">Elite Reformulation</div>
+            <div class="step-time">15 min &mdash; Human Value</div>
+            <div class="step-desc">AI provides the structure. Vortex Core provides the soul and contextual precision. This is where your irreplaceable human advantage lives.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <div class="step-title">Delivery</div>
+            <div class="step-time">5 min &mdash; WhatsApp</div>
+            <div class="step-desc">Structured deliverable sent directly to your mobile. Readable, actionable, immediately deployable. No calls. Data only.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-bar">&#9889; Total processing time: 35 minutes maximum</div>
+    </div>
+  </div>
+
+  <!-- Social Proof -->
+  <div class="social">
+    <div class="social-inner">
+      <span class="section-tag">&gt;&gt; Operators Speak</span>
+      <div class="testimonials">
+        <div class="testi">
+          <div class="testi-text">"In 35 minutes I had a clearer action plan than after 3 months of trying to figure it out alone."</div>
+          <div class="testi-author">&#9654; Operator, Kampala &mdash; Retail</div>
+        </div>
+        <div class="testi">
+          <div class="testi-text">"The Blender showed me I was targeting the wrong client entirely. That saved me 6 months."</div>
+          <div class="testi-author">&#9654; Operator, Entebbe &mdash; Services</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submission -->
+  <div class="submission" id="submit">
+    <div class="submission-inner">
+      <span class="section-tag">&gt;&gt; Submission Protocol</span>
+      <h2>Submit your file</h2>
+      <div class="sub-intro">
+        Complete all 6 fields below. <strong>Incomplete submissions are not processed.</strong><br>
+        Select your level above before submitting. No calls. Data only.
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="f01">[01] &mdash; Project Alias / Code Name</label>
+        <input class="field-input" type="text" id="f01" placeholder="e.g. PROJECT_ALPHA" autocomplete="off" />
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="f02">[02] &mdash; Primary Target</label>
+        <input class="field-input" type="text" id="f02" placeholder="Funding / Pitch / Partnership / Clients" autocomplete="off" />
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="f03">[03] &mdash; Core Concept (Raw Idea)</label>
+        <textarea class="field-textarea" id="f03" placeholder="Describe your idea without filter. Raw. Direct."></textarea>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="f04">[04] &mdash; Friction Points (Current Blockers)</label>
+        <textarea class="field-textarea" id="f04" placeholder="What is blocking you right now?"></textarea>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="f05">[05] &mdash; Final Deliverable (What you need)</label>
+        <input class="field-input" type="text" id="f05" placeholder="e.g. 30-day action plan, pitch deck, revenue model..." autocomplete="off" />
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="f06">[06] &mdash; Critical Deadline</label>
+        <input class="field-input" type="text" id="f06" placeholder="e.g. Within 2 weeks, before May 15th..." autocomplete="off" />
+      </div>
+
+      <button class="btn-submit" onclick="submitToBlender()">
+        &#9889; [ Submit to the Blender ] &#9889;
+      </button>
+      <p class="sub-note">Protocol activated &mdash; Response within 2&ndash;4 hours &mdash; No calls, data only.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="f-logo">VORTEX <span>CORE</span></div>
+    <div class="f-tagline">Elite Strategy &amp; Radical Execution</div>
+    <div class="f-contact">WhatsApp: <a href="https://wa.me/256761741850">+256 761 741 850</a></div>
+    <div class="f-contact">Data only &mdash; No calls &mdash; No meetings</div>
+    <div class="f-legal">VORTEX CORE &copy; 2026 &mdash; ALL RIGHTS RESERVED &mdash; CONFIDENTIAL</div>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      if (lang === 'fr') {
+        // FR not yet available — visual feedback only
+        var btn = document.getElementById('btn-fr');
+        var orig = btn.innerHTML;
+        btn.style.color = '#FF6600';
+        setTimeout(function() { btn.style.color = ''; }, 800);
+        return;
+      }
+      document.getElementById('btn-en').classList.add('active');
+      document.getElementById('btn-fr').classList.remove('active');
+    }
+
+    function submitToBlender() {
+      var f01 = document.getElementById('f01').value.trim();
+      var f02 = document.getElementById('f02').value.trim();
+      var f03 = document.getElementById('f03').value.trim();
+      var f04 = document.getElementById('f04').value.trim();
+      var f05 = document.getElementById('f05').value.trim();
+      var f06 = document.getElementById('f06').value.trim();
+
+      if (!f01 || !f02 || !f03 || !f04 || !f05 || !f06) {
+        showAlert('VORTEX CORE: Access limited. Only complete files are processed. Please fill in all 6 fields before submitting.');
+        return;
+      }
+
+      var message =
+        'VORTEX PROTOCOL INITIATED.\n\n' +
+        'Project Data:\n' +
+        '- Alias: ' + f01 + '\n' +
+        '- Target: ' + f02 + '\n' +
+        '- Concept: ' + f03 + '\n' +
+        '- Friction: ' + f04 + '\n' +
+        '- Deliverable: ' + f05 + '\n' +
+        '- Deadline: ' + f06;
+
+      var encoded = encodeURIComponent(message);
+      var url = 'https://wa.me/256761741850?text=' + encoded;
+      window.open(url, '_blank');
+    }
+
+    function showAlert(msg) {
+      document.getElementById('alertMsg').textContent = msg;
+      document.getElementById('alertOverlay').classList.add('visible');
+    }
+
+    function closeAlert() {
+      document.getElementById('alertOverlay').classList.remove('visible');
+    }
+
+    document.getElementById('alertOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closeAlert();
+    });
+  </script>
+
+</body>
+</html>
