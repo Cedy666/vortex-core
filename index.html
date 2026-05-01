@@ -721,7 +721,8 @@
 
     @media (max-width: 768px) {
       .pricing-grid { grid-template-columns: 1fr; }
-      .blender-grid { grid-template-columns: repeat(2, 1fr); }
+      .blender-grid { grid-template-columns: 1fr; }
+      .blender-step::after { display: none; }
       .testi-grid { grid-template-columns: 1fr; }
     }
 
@@ -1216,20 +1217,15 @@ function showFinal(type) {
     document.getElementById('leadOverlay').classList.add('visible');
     return;
   }
-  // Hunter: show final screen
-  const content = document.getElementById('hunter-content');
-  content.innerHTML = `
-    <div class="final-screen">
-      <div class="final-icon">🎯</div>
-      <h2>SCAN LOCKED IN</h2>
-      <p>Your profile is now in the Vortex Vault. We will contact you with your personalized Scan For Profit plan within 24 hours.</p>
-      <p style="font-size:.82rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase">
-        Vortex Core — Kampala, Uganda
-      </p>
-      <button class="q-next" style="margin-top:16px;background:var(--red);color:var(--white)" onclick="closeModal('hunter')">CLOSE</button>
-    </div>`;
+  // Hunter: open Lead Capture Modal (same as architect)
+  document.getElementById('lName').value = '';
+  document.getElementById('lWA').value = '';
+  document.getElementById('lEmail').value = '';
+  document.getElementById('lConsent').checked = false;
   document.getElementById('h-progress').style.width = '100%';
   document.getElementById('h-counter').textContent = 'DONE';
+  document.getElementById('leadOverlay').dataset.source = 'hunter';
+  document.getElementById('leadOverlay').classList.add('visible');
 }
 
 // Close on overlay click
@@ -1305,8 +1301,28 @@ function confirmAndSend() {
     'Biggest Fear / Concern'
   ];
 
-  var answers = state['architect'].answers;
-  var msg = 'VORTEX PROTOCOL — ARCHITECT FILE\n';
+  var source = document.getElementById('leadOverlay').dataset.source || 'architect';
+  var isHunter = source === 'hunter';
+
+  var hunterLabels = [
+    'Full Names','Current Location','Age','Current Job Title','Monthly Income',
+    'Relationship Status','Dependants','Education Level','Preferred Language','Top Skill',
+    'Motivation Level (1-10)','Why Now?','Risk Profile','Cash Available','Money Source',
+    'Monthly Savings Potential','Biggest Fear in Business','Who Will Laugh?','Who Will Help?',
+    'Can Survive 6 Months?','Ready to Work While Others Sleep?','Equipment Status',
+    'Hours/Day for Business','Business Idea (Years)','Why Not Started?','Neighborhood Problem',
+    'Work Style','Sales Ability','Bad Habits','Ready to Start Monday?',
+    'Freedom Figure','Most Successful Person Known','Daily Checklist?','What Makes You Quit?',
+    'Internet or Street?','Family Awareness','Can Travel?','Kids Vision (5 Years)',
+    'Ready for Vortex?','Why Should We Pick You?'
+  ];
+
+  var answers = isHunter ? state['hunter'].answers : state['architect'].answers;
+  var labels  = isHunter ? hunterLabels : qLabels;
+  var questions = isHunter ? hunterQuestions : architectQuestions;
+  var title   = isHunter ? 'VORTEX PROTOCOL — HUNTER FILE' : 'VORTEX PROTOCOL — ARCHITECT FILE';
+
+  var msg = title + '\n';
   msg += '━━━━━━━━━━━━━━━━━━━━━━\n';
   msg += 'CLIENT: ' + lName + '\n';
   msg += 'WhatsApp: ' + lWA + '\n';
@@ -1314,21 +1330,21 @@ function confirmAndSend() {
   msg += 'Consent: Confirmed\n';
   msg += '━━━━━━━━━━━━━━━━━━━━━━\n\n';
 
-  for (var i = 0; i < qLabels.length; i++) {
+  for (var i = 0; i < labels.length; i++) {
     var ans = answers[i];
     if (ans === undefined || ans === null) ans = '—';
     if (typeof ans === 'number') {
-      // options question — try to get the option text from architectQuestions
-      var opts = architectQuestions[i].options;
+      var opts = questions[i].options;
       ans = opts ? (opts[ans] || ans) : ans;
     }
-    msg += 'Q' + (i + 1) + '. ' + qLabels[i] + ':\n' + ans + '\n\n';
+    msg += 'Q' + (i + 1) + '. ' + labels[i] + ':\n' + ans + '\n\n';
   }
 
   var encoded = encodeURIComponent(msg);
   window.open('https://wa.me/256761741850?text=' + encoded, '_blank');
   closeLead();
-  closeModal('architect');
+  closeModal(isHunter ? 'hunter' : 'architect');
+  document.getElementById('leadOverlay').dataset.source = '';
 }
 
 </script>
