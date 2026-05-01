@@ -200,7 +200,7 @@
       50%      { transform: scale(1.4); opacity: .9; }
     }
     .hs1 { width:12px;height:12px; top:22%; left:30%; animation-delay: 0s; }
-    .hs2 { width: 8px;height: 8px; top:55%; left:65%; animation-delay: .5s; }
+    .hs2 { width: 8px;height: 8px; top:82%; left:72%; animation-delay: .5s; }
     .hs3 { width:10px;height:10px; top:70%; left:20%; animation-delay: 1s; }
     .hs4 { width: 6px;height: 6px; top:35%; left:80%; animation-delay: 1.5s; }
 
@@ -1057,30 +1057,30 @@
 <script>
 // ─── ARCHITECT QUESTIONS (24) ─────────────────────────────
 const architectQuestions = [
-  { section: "Q1 — Project Identity", text: "Name your project and define its mission in one impact sentence. What are you here to break on the market?", type: "textarea" },
-  { section: "Q2 — Pillar Routing", text: "Choose your combat arena:", type: "options", options: ["A. RETAIL / PHYSICAL — Shop, restaurant, point of sale, physical stock", "B. DIGITAL / SERVICE — App, agency, platform, online expertise", "C. CRAFTS / PRODUCTION — Workshop, factory, material transformation, manufacturing", "D. TRADING / INTERMEDIARY — Brokerage, import-export, networking"] },
-  { section: "Q3 — Target & Flow", text: "Who is your primary customer? Describe them in raw terms — age, income, behavior, location.", type: "textarea" },
-  { section: "Q4 — Target & Flow", text: "How many customers can you realistically reach in your first 30 days? How?", type: "textarea" },
-  { section: "Q5 — Target & Flow", text: "What does your direct competition look like? Name them. What do they do that you can destroy?", type: "textarea" },
-  { section: "Q6 — Target & Flow", text: "What is the buying trigger? Why does your customer pay TODAY — not tomorrow?", type: "textarea" },
-  { section: "Q7 — Target & Flow", text: "What is your acquisition channel — the ONE route where your first 10 clients come from?", type: "textarea" },
-  { section: "Q8 — Target & Flow", text: "What proof do you have that the market wants this — one real signal, not a dream?", type: "textarea" },
-  { section: "Q9 — Operations", text: "What are the 3 critical things that must work on Day 1 or your business dies?", type: "textarea" },
-  { section: "Q10 — Operations", text: "List every tool, equipment or system you need to start. What's missing right now?", type: "textarea" },
-  { section: "Q11 — Operations", text: "Who does the work? You alone, or do you need people? What are the roles?", type: "textarea" },
-  { section: "Q12 — Operations", text: "What is your biggest operational risk — the thing that keeps you up at night?", type: "textarea" },
-  { section: "Q13 — Operations", text: "How do you deliver your product or service to the client? Step by step.", type: "textarea" },
-  { section: "Q14 — Operations", text: "What quality control exists? How do you know when something is wrong before the client complains?", type: "textarea" },
-  { section: "Q15 — Operations", text: "What happens if your main supplier or tool fails tomorrow? What's your backup?", type: "textarea" },
-  { section: "Q16 — Cash & Resilience", text: "BURN-RATE: How much cash does your project consume per month before generating its first shilling?", type: "textarea" },
-  { section: "Q17 — Cash & Resilience", text: "BREAK-EVEN: What is the exact sales volume needed to stop losing money?", type: "textarea" },
-  { section: "Q18 — Cash & Resilience", text: "WCR: How do you finance your stocks or servers before being paid by your customers?", type: "textarea" },
-  { section: "Q19 — Cash & Resilience", text: "PRICING: Does your margin allow you to survive a 20% increase in your costs?", type: "options", options: ["Yes — margin is solid", "No — it would kill us", "I don't know — never calculated it"] },
-  { section: "Q20 — Cash & Resilience", text: "How many months of runway do you have right now if zero revenue comes in?", type: "textarea" },
-  { section: "Q21 — Cash & Resilience", text: "What is your single biggest financial leak today?", type: "textarea" },
-  { section: "Q22 — Cash & Resilience", text: "If a client refuses to pay, what happens to your operations?", type: "textarea" },
-  { section: "Q23 — Cash & Resilience", text: "What is the one financial metric you track every day without fail?", type: "textarea" },
-  { section: "Q24 — The Lock 🔒", text: "You have listed many objectives and constraints. Out of everything you have filled in this Vortex diagnostic — what is the UNIQUE priority action that will trigger all the rest of your growth?", type: "textarea" }
+  { section: "Q1 — Location", text: "In which specific city or neighborhood do you plan to launch your activity?", type: "textarea" },
+  { section: "Q2 — Project Identity", text: "What is the working name of your project?", type: "textarea" },
+  { section: "Q3 — Your Idea", text: "Describe your business idea in two simple sentences, as if explaining it to a friend.", type: "textarea" },
+  { section: "Q4 — Your Motivation", text: "Why are you choosing to launch this specific project at this stage of your life?", type: "textarea" },
+  { section: "Q5 — Your Experience", text: "Is this a field where you already have professional experience, or is it a new venture for you?", type: "options", options: ["Yes — I have professional experience in this field", "No — this is a new venture for me", "Partial — some experience but mostly new territory"] },
+  { section: "Q6 — Your Edge", text: "What makes your service or shop different from the ones already existing in that area?", type: "textarea" },
+  { section: "Q7 — Legal Structure", text: "Do you intend to create a formal company (separate legal entity with its own bank account)?", type: "options", options: ["Yes — I want a formal company", "No — I prefer to stay informal for now", "Not sure yet"] },
+  { section: "Q8 — Legal Structure", text: "Or do you prefer to start as a Sole Trader / Self-Employed (working under your own name)?", type: "options", options: ["Yes — Sole Trader / Self-Employed", "No — I want a separate legal entity", "I need advice on this"] },
+  { section: "Q9 — Ownership", text: "Will you be the 100% owner, or do you have business partners involved?", type: "options", options: ["100% owner — I go alone", "I have partners involved", "I'm open to partners but none confirmed yet"] },
+  { section: "Q10 — Licenses & Diplomas", text: "Do you already hold the required professional licenses or diplomas for this specific trade?", type: "options", options: ["Yes — fully licensed and qualified", "No — I need to obtain them", "Partially — some but not all"] },
+  { section: "Q11 — Team", text: "Do you plan to hire staff immediately, or will you start as a one-person operation?", type: "options", options: ["Hire staff immediately", "Start alone — one-person operation", "Start alone then hire when revenue allows"] },
+  { section: "Q12 — Location", text: "Do you already have a specific shop, office, or location in mind?", type: "options", options: ["Yes — I have a specific place in mind", "No — still searching", "I will operate from home / mobile"] },
+  { section: "Q13 — Rent or Buy", text: "If yes, is it a space you intend to rent or purchase?", type: "options", options: ["Rent", "Purchase", "Not applicable — no fixed location"] },
+  { section: "Q14 — Equipment", text: "What is the most expensive piece of equipment you need to start (vehicle, specialized machinery, tools)?", type: "textarea" },
+  { section: "Q15 — First Customers", text: "How do you plan to find your first 10 customers (door-to-door, social media, word of mouth...)?", type: "textarea" },
+  { section: "Q16 — Operations", text: "Will you be working from a physical location, or is your business mobile / service-based?", type: "options", options: ["Physical location — fixed address", "Mobile — I go to the client", "Service-based — online or remote", "Hybrid — both physical and mobile"] },
+  { section: "Q17 — Capital Available", text: "Exactly how much capital do you have available today to launch this project?", type: "textarea" },
+  { section: "Q18 — Financing", text: "Are you looking for a bank loan or a private investor to complete your budget?", type: "options", options: ["Yes — bank loan", "Yes — private investor", "Both — open to either", "No — I rely on my own funds only"] },
+  { section: "Q19 — Max Budget", text: "What is the absolute maximum budget you are willing to invest to get started?", type: "textarea" },
+  { section: "Q20 — Income Target", text: "What is your target monthly net income after one year of operation?", type: "textarea" },
+  { section: "Q21 — CRITICAL: Launch Date", text: "CRITICAL: On what exact date do you want your business to be fully open and operational?", type: "textarea" },
+  { section: "Q22 — Time Commitment", text: "How many hours per week do you plan to dedicate to this project?", type: "textarea" },
+  { section: "Q23 — Main or Side Activity", text: "Is this your main activity, or are you keeping another job on the side?", type: "options", options: ["Main activity — full focus on this", "Side activity — I keep my current job", "Transition — side now, full-time soon"] },
+  { section: "Q24 — Your Biggest Fear 🔒", text: "What is your biggest fear or concern regarding the success of this project?", type: "textarea" }
 ];
 
 // ─── HUNTER QUESTIONS (40) ───────────────────────────────
@@ -1279,30 +1279,30 @@ function confirmAndSend() {
   }
 
   var qLabels = [
-    'Project Identity — Name & Mission',
-    'Combat Arena',
-    'Primary Customer Profile',
-    'First 30 Days — Customer Reach',
-    'Competition & Differentiator',
-    'Buying Trigger',
-    'Acquisition Channel',
-    'Market Proof Signal',
-    '3 Critical Day-1 Requirements',
-    'Tools & Equipment — What\'s Missing',
-    'Team Structure',
-    'Biggest Operational Risk',
-    'Delivery Process',
-    'Quality Control',
-    'Backup Plan',
-    'BURN-RATE (Monthly Cash Consumption)',
-    'BREAK-EVEN (Volume Required)',
-    'WCR — Working Capital',
-    'PRICING — Margin Resilience',
-    'Months of Runway',
-    'Biggest Financial Leak',
-    'Non-Payment Impact',
-    'Daily Financial Metric',
-    'CRITICAL — Priority Action'
+    'Launch City / Neighborhood',
+    'Project Working Name',
+    'Business Idea (2 sentences)',
+    'Motivation — Why Now?',
+    'Professional Experience',
+    'Your Competitive Edge',
+    'Formal Company',
+    'Sole Trader / Self-Employed',
+    'Ownership Structure',
+    'Licenses & Diplomas',
+    'Team — Hire or Solo?',
+    'Location in Mind',
+    'Rent or Purchase',
+    'Most Expensive Equipment',
+    'First 10 Customers Strategy',
+    'Physical or Mobile?',
+    'Capital Available Today',
+    'Bank Loan or Investor?',
+    'Maximum Budget',
+    'Target Monthly Net Income (Year 1)',
+    'CRITICAL — Exact Launch Date',
+    'Hours per Week',
+    'Main or Side Activity',
+    'Biggest Fear / Concern'
   ];
 
   var answers = state['architect'].answers;
