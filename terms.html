@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms & Conditions — VORTEX CORE</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Barlow+Condensed:wght@400;600;700;800;900&family=Share+Tech+Mono&display=swap');
+
+    :root {
+      --blue:    #00aaff;
+      --blue2:   #0066cc;
+      --red:     #ff2200;
+      --gold:    #f5a623;
+      --dark:    #080c12;
+      --navy:    #060d1a;
+      --charcoal:#111418;
+      --grey:    #1c2028;
+      --text:    #c8d0dc;
+      --white:   #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'Barlow Condensed', sans-serif;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* ─── HEADER ─────────────────────────────────────── */
+    header {
+      background: rgba(6, 10, 18, .95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,170,255,.18);
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: .12em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+    .logo-name span { color: var(--blue); }
+
+    .logo-tagline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: .62rem;
+      letter-spacing: .35em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .back-btn {
+      color: var(--blue);
+      text-decoration: none;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      border: 1px solid rgba(0,170,255,.3);
+      padding: 8px 18px;
+      transition: all .2s;
+    }
+    .back-btn:hover {
+      background: rgba(0,170,255,.1);
+      border-color: var(--blue);
+    }
+
+    /* ─── HERO BANNER ───────────────────────────────── */
+    .tc-hero {
+      background: var(--navy);
+      border-bottom: 1px solid rgba(0,170,255,.15);
+      padding: 70px 40px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tc-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    }
+
+    .tc-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .3em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .tc-hero h1 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: var(--white);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .tc-hero h1 span { color: var(--blue); }
+
+    .tc-meta {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .75rem;
+      color: rgba(200, 208, 220, .5);
+      letter-spacing: .1em;
+    }
+
+    /* ─── CONTENT ───────────────────────────────────── */
+    .tc-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 70px 40px 100px;
+    }
+
+    .tc-intro {
+      background: var(--grey);
+      border-left: 3px solid var(--blue);
+      padding: 22px 28px;
+      margin-bottom: 52px;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .tc-section {
+      margin-bottom: 48px;
+    }
+
+    .tc-section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(0,170,255,.15);
+    }
+
+    .tc-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .7rem;
+      color: var(--blue);
+      letter-spacing: .2em;
+      min-width: 40px;
+    }
+
+    .tc-section h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    .tc-section p,
+    .tc-section li {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .tc-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tc-section ul li {
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .tc-section ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+    }
+
+    .highlight-box {
+      background: rgba(0,170,255,.06);
+      border: 1px solid rgba(0,170,255,.2);
+      padding: 18px 24px;
+      margin: 16px 0;
+    }
+
+    .highlight-box.red {
+      background: rgba(255,34,0,.05);
+      border-color: rgba(255,34,0,.2);
+    }
+
+    .highlight-box strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .price-badge {
+      display: inline-block;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .9rem;
+      color: var(--gold);
+      letter-spacing: .08em;
+      border: 1px solid rgba(245,166,35,.3);
+      padding: 4px 12px;
+      margin: 6px 0;
+    }
+
+    /* ─── DIVIDER ───────────────────────────────────── */
+    .tc-divider {
+      border: none;
+      border-top: 1px solid rgba(0,170,255,.1);
+      margin: 48px 0;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(0,170,255,.18);
+      padding: 32px 40px;
+      text-align: center;
+    }
+
+    .footer-copy {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .72rem;
+      color: rgba(200,208,220,.4);
+      letter-spacing: .1em;
+    }
+
+    .footer-copy a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 640px) {
+      header { padding: 14px 20px; }
+      .tc-hero { padding: 50px 20px 36px; }
+      .tc-wrapper { padding: 40px 20px 70px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo-block">
+    <div>
+      <div class="logo-name">VORTEX <span>CORE</span></div>
+      <div class="logo-tagline">Unlock Your Future</div>
+    </div>
+  </a>
+  <a href="index.html" class="back-btn">← Back to Site</a>
+</header>
+
+<!-- HERO -->
+<div class="tc-hero">
+  <p class="tc-tag">// Legal Documentation — System Protocol</p>
+  <h1>Terms &amp; <span>Conditions</span></h1>
+  <p class="tc-meta">Effective Date: January 1, 2026 &nbsp;|&nbsp; Vortex Core — Kampala, Uganda &nbsp;|&nbsp; Version 1.0</p>
+</div>
+
+<!-- CONTENT -->
+<div class="tc-wrapper">
+
+  <div class="tc-intro">
+    Please read these Terms and Conditions carefully before using any service offered by Vortex Core. By submitting your responses through the Architect Gate or the Hunter Gate, or by making any payment to Vortex Core, you acknowledge that you have read, understood, and agree to be bound by these Terms.
+  </div>
+
+  <!-- 1. PARTIES -->
+  <div class="tc-section">
+    <div class="tc-section-header">
+      <span class="tc-num">01 //</span>
+      <h2>Identification of Parties</h2>
+    </div>
+    <p><strong style="color:var(--white)">Service Provider:</strong> Vortex Core, a business diagnostic and strategic advisory service operating from Kampala, Uganda ("Vortex Core", "we", "us", or "our").</p>
+    <p><strong style="color:var(--white)">Client:</strong> Any individual or entity that accesses the Vortex Core platform, submits responses through any diagnostic gate, or purchases any service offered by Vortex Core ("Client", "you", or "your").</p>
+    <p>These Terms govern the relationship between Vortex Core and the Client with respect to all services described herein.</p>
+  </div>
+
+  <!-- 2. SERVICES -->
+  <div class="tc-section">
+    <div class="tc-section-header">
+      <span class="tc-num">02 //</span>
+      <h2>Services Offered</h2>
+    </div>
+    <p>Vortex Core provides business diagnostic and strategic advisory services through two proprietary assessment frameworks:</p>
+    <ul>
+      <li><strong style="color:var(--white)">The Architect Gate (Quick Scan):</strong> A 24-question strategic audit designed to identify conceptual strengths, weaknesses, and blind spots in a business idea or early-stage venture. A written diagnostic report is delivered via WhatsApp within 24 hours of submission.</li>
+      <li><strong style="color:var(--white)">The Hunter Gate (Full Protocol):</strong> A 40-question in-depth business scan designed to map market reality, competitive positioning, and entrepreneurial readiness. A comprehensive report is delivered via WhatsApp within 24 hours of submission.</li>
+    </ul>
+    <p>Vortex Core reserves the right to modify, suspend, or discontinue any service at any time with reasonable notice to affected Clients.</p>
+  </div>
+
+  <!-- 3. PRICING -->
+  <div class="tc-section">
+    <div class="tc-section-header">
+      <span class="tc-num">03 //</span>
+      <h2>Pricing &amp; Payment</h2>
+    </div>
+    <p>Current service pricing is as follows:</p>
+    <div class="highlight-box">
+      <p><strong>Quick Scan (Architect Gate)</strong></p>
+      <span class="price-badge">50,000 UGX</span>
+      <p style="margin-top:8px;font-size:.9rem;">Delivered within 24 hours — Strategic diagnostic report via WhatsApp.</p>
+    </div>
+    <p>All prices are stated in Ugandan Shillings (UGX) and are inclusive of all applicable fees unless stated otherwise. Vortex Core reserves the right to update pricing at any time. Price changes will not affect orders already confirmed and paid.</p>
+    <p>Payment must be completed in full prior to service delivery. Vortex Core will not initiate the diagnostic process or deliver any report until payment has been received and confirmed.</p>
+  </div>
+
+  <!-- 4. DELIVERY -->
+  <div class="tc-section">
+    <div class="tc-section-header">
+      <span class="tc-num">04 //</span>
+      <h2>Service Delivery</h2>
+    </div>
+    <p>Upon receipt of your completed questionnaire responses and confirmed payment, Vortex Core commits to delivering your diagnostic report via WhatsApp within <strong style="color:var(--white)">24 hours</strong>.</p>
+    <p>Delivery timelines are calculated from the moment all of the following conditions are met:</p>
+    <ul>
+      <li>All questionnaire responses have been received in full.</li>
+      <li>Payment has been confirmed by Vortex Core.</li>
+      <li>The WhatsApp number provided by the Client is valid and accessible.</li>
+    </ul>
+    <p>Vortex Core shall not be held responsible for delays caused by incorrect contact information, WhatsApp account restrictions, network failures, or any other circumstances beyond our reasonable control.</p>
+  </div>
+
+  <!-- 5. REFUND POLICY -->
+  <div class="tc-section">
+    <div class="tc-section-header">
+      <span class="tc-num">05 //</span>
+      <h2>Refund Policy</h2>
+    </div>
+
+    <div class="highlight-box red">
+      <p><strong>No Refund After Delivery:</strong> Once your diagnostic report has been delivered via WhatsApp, the service is considered fully rendered. No refund will be issued under any circumstances after delivery, including but not limited to dissatisfaction with findings, disagreement with the analysis, or a change of business direction.</p>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>Full Refund for Non-Delivery:</strong> If Vortex Core fails to deliver your diagnostic report within <strong>24 hours</strong> of meeting all delivery conditions outlined in Section 4, you are entitled to a full refund of the amount paid. To request a refund under this condition, contact Vortex Core via WhatsApp at +256 761 741 850 with your payment confirmation. Refunds will be processed within 5 business days.</p>
+    </div>
+
+    <p>Refund requests submitted after the 24-hour delivery window has elapsed and after the report has been delivered will not be considered.</p>
+  </div>
+
+  <!-- 6. NATURE OF SERVICES -->
+  <div class="tc-section">
+    <div class="tc-section-header">
+      <span class="tc-num">06 //</span>
+      <h2>Nature of Services — Advisory Only</h2>
+    </div>
+    <p>The diagnostic reports and strategic insights provided by Vortex Core are <strong style="color:var(--white)">informational and advisory in nature only</strong>. They do not constitute:</p>
+    <ul>
+      <li>Financial advice or investment recommendations.</li>
+      <li>Legal advice or regulatory guidance.</li>
+      <li>A guarantee of business success, profitability, or market viability.</li>
+      <li>A substitute for independent professional advice.</li>
+    </ul>
+    <p>The Client is solely responsible for any decisions made based on the content of the Vortex Core diagnostic report. Vortex Core strongly encourages Clients to seek qualified legal, financial, and business advisors before making significant business decisions.</p>
+  </div>
+
+  <!-- 7. DATA & CONFIDENTIALITY -->
+  <div class="tc-section">
+    <div class="tc-section-header">
+      <span class="tc-num">07 //</span>
+      <h2>Data Collection &amp; Confidentiality</h2>
+    </div>
+    <p>When you use Vortex Core services, you provide us with information through our diagnostic questionnaires, including but not limited to: your name, contact details (WhatsApp number), and your responses to diagnostic questions relating to your business idea, goals, and personal profile.</p>
+    <p><strong style="color:var(--white)">How we use your data:</strong></p>
+    <ul>
+      <li>To generate and deliver your personalised diagnostic report.</li>
+      <li>To contact you regarding your service request.</li>
+      <li>To improve the Vortex Core diagnostic methodology (in anonymised form only).</li>
+    </ul>
+    <p><strong style="color:var(--white)">What we do not do:</strong></p>
+    <ul>
+      <li>We do not sell, trade, or rent your personal data to third parties.</li>
+      <li>We do not share your individual responses or report with any other party without your explicit written consent.</li>
+      <li>We do not store your WhatsApp number for unsolicited marketing purposes.</li>
+    </ul>
+    <p>By submitting your responses, you consent to Vortex Core processing your data as described above. All data submitted through the Vortex Core platform is treated as <strong style="color:var(--white)">confidential</strong> and handled with professional discretion.</p>
+  </div>
+
+  <!-- 8. INTELLECTUAL PROPERTY -->
+  <div class="tc-section">
+    <div class="tc-section-header">
+      <span class="tc-num">08 //</span>
+      <h2>Intellectual Property</h2>
+    </div>
+    <p>All content, methodologies, frameworks, questions, processes, branding, and materials associated with Vortex Core — including but not limited to the Architect Gate, the Hunter Gate, and the Vortex Core diagnostic system — are the exclusive intellectual property of Vortex Core.</p>
+    <p>The Client is granted a personal, non-transferable, non-exclusive licence to use the diagnostic report delivered to them for their own business planning purposes. The Client may not:</p>
+    <ul>
+      <li>Reproduce, resell, or distribute the Vortex Core diagnostic report or methodology.</li>
+      <li>Use Vortex Core branding, names, or frameworks for commercial purposes.</li>
+      <li>Claim authorship or ownership of any Vortex Core content or system.</li>
+    </ul>
+    <p>Vortex Core does not claim ownership over the Client's business idea or any information shared through the questionnaire process.</p>
+  </div>
+
+  <!-- 9. LIMITATION OF LIABILITY -->
+  <div class="tc-section">
+    <div class="tc-section-header">
+      <span class="tc-num">09 //</span>
+      <h2>Limitation of Liability</h2>
+    </div>
+    <p>To the fullest extent permitted by applicable law, Vortex Core shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:</p>
+    <ul>
+      <li>Loss of profits, revenue, or business opportunity.</li>
+      <li>Business failure resulting from decisions made based on the diagnostic report.</li>
+      <li>Losses arising from reliance on information contained in the report.</li>
+      <li>Technical failures, delivery delays, or data loss beyond Vortex Core's control.</li>
+    </ul>
+    <p>In all cases, Vortex Core's maximum liability to the Client shall not exceed the amount paid by the Client for the specific service giving rise to the claim.</p>
+  </div>
+
+  <!-- 10. GOVERNING LAW -->
+  <div class="tc-section">
+    <div class="tc-section-header">
+      <span class="tc-num">10 //</span>
+      <h2>Governing Law &amp; Disputes</h2>
+    </div>
+    <p>These Terms and Conditions shall be governed by and construed in accordance with the laws of the <strong style="color:var(--white)">Republic of Uganda</strong>. Any disputes arising out of or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts of Uganda.</p>
+    <p>In the event of a dispute, Vortex Core encourages Clients to first seek resolution through direct communication via WhatsApp at <strong style="color:var(--white)">+256 761 741 850</strong> before pursuing formal legal proceedings. We are committed to resolving issues efficiently and in good faith.</p>
+  </div>
+
+  <!-- 11. AMENDMENTS -->
+  <div class="tc-section">
+    <div class="tc-section-header">
+      <span class="tc-num">11 //</span>
+      <h2>Amendments to These Terms</h2>
+    </div>
+    <p>Vortex Core reserves the right to update or modify these Terms and Conditions at any time. Any changes will be effective immediately upon publication on the Vortex Core website. Your continued use of Vortex Core services following any such change constitutes your acceptance of the new Terms.</p>
+    <p>The date of the most recent revision is indicated at the top of this document. We encourage Clients to review these Terms periodically.</p>
+  </div>
+
+  <!-- 12. CONTACT -->
+  <div class="tc-section">
+    <div class="tc-section-header">
+      <span class="tc-num">12 //</span>
+      <h2>Contact</h2>
+    </div>
+    <p>For any questions, concerns, or requests related to these Terms and Conditions, please contact us:</p>
+    <div class="highlight-box">
+      <p><strong style="color:var(--white)">Vortex Core</strong></p>
+      <p>Kampala, Uganda</p>
+      <p>WhatsApp: <strong style="color:var(--blue)">+256 761 741 850</strong></p>
+      <p>Website: <strong style="color:var(--blue)">https://cedy666.github.io/vortex-core</strong></p>
+    </div>
+  </div>
+
+  <hr class="tc-divider">
+
+  <p style="font-family:'Share Tech Mono',monospace;font-size:.75rem;color:rgba(200,208,220,.4);letter-spacing:.08em;text-align:center;">
+    By engaging with Vortex Core services, you confirm that you have read,<br>understood, and accepted these Terms and Conditions in full.
+  </p>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-copy">
+    © 2026 Vortex Core — Kampala, Uganda. Confidential Data System.<br>
+    <a href="index.html">← Return to Main Site</a>
+  </p>
+</footer>
+
+</body>
+</html>
