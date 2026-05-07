@@ -674,7 +674,7 @@
 
     /* ─── PRICING ────────────────────────────────────────── */
     .pricing-section { padding: 100px 40px; background: var(--dark); text-align: center; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 48px auto 0; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(2, minmax(280px, 360px)); gap: 28px; max-width: 780px; margin: 40px auto 0; justify-content: center; }
     .pricing-card { border: 1px solid rgba(0,170,255,.15); padding: 40px 28px; background: var(--charcoal); position: relative; transition: border-color .3s, transform .3s; }
     .pricing-card:hover { border-color: rgba(0,170,255,.45); transform: translateY(-4px); }
     .pricing-card.featured { border-color: var(--blue); background: rgba(0,170,255,.06); }
@@ -684,6 +684,19 @@
     .pricing-price { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 2rem; color: var(--blue); margin-bottom: 8px; }
     .pricing-note { font-size: .8rem; color: rgba(255,255,255,.4); letter-spacing: .05em; margin-bottom: 24px; min-height: 36px; }
     .pricing-desc { font-size: .88rem; color: var(--text); line-height: 1.65; border-top: 1px solid rgba(255,255,255,.07); padding-top: 20px; }
+
+    /* ─── HOW IT WORKS ──────────────────────────────────────── */
+    .how-section { padding: 80px 40px; background: var(--charcoal); border-top: 1px solid rgba(0,170,255,.1); border-bottom: 1px solid rgba(0,170,255,.1); text-align: center; }
+    .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 1000px; margin: 40px auto 0; }
+    .how-step { position: relative; padding: 28px 20px; background: var(--grey); border-top: 2px solid rgba(0,170,255,.2); transition: border-color .3s; }
+    .how-step:hover { border-color: var(--blue); }
+    .how-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .how-num { font-family: 'Share Tech Mono', monospace; font-size: .65rem; color: var(--blue); letter-spacing: .3em; margin-bottom: 10px; }
+    .how-step h3 { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--white); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; }
+    .how-time { font-family: 'Share Tech Mono', monospace; font-size: .65rem; color: rgba(0,170,255,.6); font-weight: 400; letter-spacing: .1em; display: block; margin-top: 2px; }
+    .how-step p { font-size: .9rem; line-height: 1.6; color: var(--text); }
+    @media(max-width:768px) { .how-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:480px) { .how-grid { grid-template-columns: 1fr; } }
 
     /* ─── BLENDER PROCESS ────────────────────────────────── */
     .blender-section { padding: 100px 40px; background: var(--navy); border-top: 1px solid rgba(0,170,255,.1); border-bottom: 1px solid rgba(0,170,255,.1); }
@@ -758,9 +771,9 @@
 
   <nav>
     <a href="#gate">Enter</a>
+    <a href="#process">How It Works</a>
     <a href="#pricing">Pricing</a>
-    <a href="#blender">Process</a>
-    <a href="#vortex-way">The Way</a>
+    <a href="#testimonials">Results</a>
   </nav>
 
   <button class="btn-primary" onclick="openModal('architect')">AUDIT MY CONCEPT</button>
@@ -820,74 +833,11 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     THE VORTEX WAY
-═══════════════════════════════════════════════ -->
-<section class="vortex-way" id="vortex-way">
-  <p class="section-title">— The Vortex Way —</p>
-  <div class="pillars">
-    <div class="pillar">
-      <div class="pillar-number">01 / SCAN</div>
-      <h3>Scan</h3>
-      <p>I see what you don't. Your strengths, your leaks. Nothing escapes the Vortex eye.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-number">02 / FOCUS</div>
-      <h3>Focus</h3>
-      <p>We don't waste energy. We hit where it pays. Precision over noise — every time.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-number">03 / TRUST</div>
-      <h3>Trust</h3>
-      <p>We start as strangers, we grow as loyal brothers. The PowerWeb is built on blood-sworn results.</p>
-    </div>
-  </div>
-</section>
 
-<!-- ═══════════════════════════════════════════════
-     PHASES
-═══════════════════════════════════════════════ -->
-<section class="phases" id="phases">
-  <p class="section-title">— Operational Phases —</p>
-  <div class="phases-grid">
-    <div class="phase-card">
-      <div class="phase-num">Phase 01</div>
-      <h3>The Scan</h3>
-      <p>Entry diagnostic. Choose your gate — Architect or Hunter. The Vortex reads your reality in full.</p>
-      <span class="phase-badge">Active Now</span>
-    </div>
-    <div class="phase-card">
-      <div class="phase-num">Phase 02</div>
-      <h3>Co-Pilot</h3>
-      <p>"We build the engine, you feed it the fuel." Vortex delivers your Business Plan & Structure. You bring the street data.</p>
-      <span class="phase-badge">Coming Soon</span>
-    </div>
-    <div class="phase-card">
-      <div class="phase-num">Phase 03</div>
-      <h3>Structure & Vault</h3>
-      <p>Daily secure archiving. WhatsApp reminder at 20:00 — "The day is over. Empty your pockets. Send your documents."</p>
-      <span class="phase-badge">Coming Soon</span>
-    </div>
-  </div>
-</section>
 
-<!-- ═══════════════════════════════════════════════
-     RULES BAR
-═══════════════════════════════════════════════ -->
-<div class="rules-bar">
-  <div class="rule-item">
-    <div class="rule-value">50,000 UGX</div>
-    <div class="rule-label">Entry Price</div>
-  </div>
-  <div class="rule-item">
-    <div class="rule-value">10</div>
-    <div class="rule-label">Dossiers / Day Max</div>
-  </div>
-  <div class="rule-item">
-    <div class="rule-value">24 / 40</div>
-    <div class="rule-label">Questions — Architect / Hunter</div>
-  </div>
-</div>
+
+
+
 
 <!-- ═══════════════════════════════════════════════
      FOOTER
@@ -897,75 +847,69 @@
      PRICING
 ═══════════════════════════════════════════════ -->
 <section class="pricing-section" id="pricing">
-  <p class="section-title">— Investment Levels —</p>
+  <p class="section-title">— Choose Your Level —</p>
   <div class="pricing-grid">
 
     <div class="pricing-card">
-      <div class="pricing-level">Level 01</div>
+      <div class="pricing-level">Entry Point</div>
       <div class="pricing-name">Quick Scan</div>
       <div class="pricing-price">50,000 UGX</div>
-      <div class="pricing-note">Delivered within 24 hours — Data only</div>
+      <div class="pricing-note">⚡ Delivered within 24 hours via WhatsApp</div>
       <div class="pricing-desc">
-        Rapid diagnostic using the Architect gate. 24 surgical questions. 
-        Get a strategic audit of your concept with a clear entry or exit signal.
+        Choose your gate — Architect (24Q) or Hunter (40Q). 
+        Receive a surgical audit of your concept with a clear entry or exit signal.
+        No calls. Data only.
       </div>
+      <button class="btn-primary" style="margin-top:20px;width:100%;font-size:.9rem;" onclick="document.getElementById('gate').scrollIntoView({behavior:'smooth'})">CHOOSE YOUR GATE</button>
     </div>
 
     <div class="pricing-card featured">
-      <div class="pricing-badge">RECOMMENDED</div>
-      <div class="pricing-level">Level 02</div>
+      <div class="pricing-badge">FOR SERIOUS FIGHTERS</div>
+      <div class="pricing-level">Full Protocol</div>
       <div class="pricing-name">Full Blender</div>
       <div class="pricing-price">Custom Pricing</div>
-      <div class="pricing-note">Pricing is customized and negotiated on a client-by-client basis.</div>
+      <div class="pricing-note">Negotiated directly — contact via WhatsApp</div>
       <div class="pricing-desc">
-        Full business concept reformulation. Intake, Master Prompt engineering, 
-        Elite Reformulation, and strategic delivery. Reserved for fighters who are serious.
+        Complete business reformulation. Intake → Prompt engineering → Elite Reformulation → Strategic delivery. 
+        Reserved for entrepreneurs ready to commit.
       </div>
-    </div>
-
-    <div class="pricing-card">
-      <div class="pricing-level">Level 03</div>
-      <div class="pricing-name">Continuous Operation</div>
-      <div class="pricing-price">Custom Pricing</div>
-      <div class="pricing-note">Pricing is customized and negotiated on a client-by-client basis.</div>
-      <div class="pricing-desc">
-        Ongoing strategic co-pilot. Daily vault archiving, WhatsApp reminders, 
-        and continuous performance tracking. For those building long-term.
-      </div>
+      <a href="https://wa.me/256761741850" target="_blank" style="display:block;margin-top:20px;">
+        <button class="btn-primary" style="width:100%;font-size:.9rem;background:transparent;border:1px solid var(--blue);color:var(--blue);">CONTACT ON WHATSAPP</button>
+      </a>
     </div>
 
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     THE BLENDER PROCESS
+     HOW IT WORKS
 ═══════════════════════════════════════════════ -->
-<section class="blender-section" id="blender">
-  <p class="section-title">— Inside the Blender —</p>
-  <div class="blender-grid">
-    <div class="blender-step">
-      <div class="blender-time">Step 01 — 5 min</div>
-      <div class="blender-step-num">📥</div>
-      <h3>Intake</h3>
+<section class="how-section" id="process">
+  <p class="section-title">— What Happens After You Submit —</p>
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="how-icon">📥</div>
+      <div class="how-num">01</div>
+      <h3>Intake <span class="how-time">5 min</span></h3>
       <p>Your dossier enters the Vortex. Every field is read. Every signal is weighed.</p>
     </div>
-    <div class="blender-step">
-      <div class="blender-time">Step 02 — 10 min</div>
-      <div class="blender-step-num">🧠</div>
-      <h3>Master Prompt</h3>
+    <div class="how-step">
+      <div class="how-icon">🧠</div>
+      <div class="how-num">02</div>
+      <h3>Analysis <span class="how-time">10 min</span></h3>
       <p>Your concept is translated into a precision-engineered strategic prompt. Zero noise.</p>
     </div>
-    <div class="blender-step">
-      <div class="blender-time">Step 03 — 15 min</div>
-      <div class="blender-step-num">⚡</div>
-      <h3>Elite Reformulation</h3>
+    <div class="how-step">
+      <div class="how-icon">⚡</div>
+      <div class="how-num">03</div>
+      <h3>Reformulation <span class="how-time">15 min</span></h3>
       <p>Your idea is reforged — clarity, positioning, and execution path locked in.</p>
     </div>
-    <div class="blender-step">
-      <div class="blender-time">Step 04 — 5 min</div>
-      <div class="blender-step-num">🎯</div>
-      <h3>Delivery</h3>
-      <p>Your strategic report lands on WhatsApp. Encrypted. Actionable. No calls. Data only.</p>
+    <div class="how-step">
+      <div class="how-icon">🎯</div>
+      <div class="how-num">04</div>
+      <h3>Delivery <span class="how-time">5 min</span></h3>
+      <p>Your report lands on WhatsApp. Actionable. Encrypted. No calls. Data only.</p>
     </div>
   </div>
 </section>
