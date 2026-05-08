@@ -604,19 +604,17 @@
       padding: 60px 40px 32px;
     }
     .footer-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 40px;
-      flex-wrap: wrap;
       margin-bottom: 48px;
+      align-items: start;
     }
-    .footer-brand { max-width: 320px; }
+    .footer-brand { }
     .footer-brand p {
-      margin-top: 16px;
       font-size: .88rem;
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.8;
     }
     .footer-links h4 {
       font-size: .68rem;
@@ -659,6 +657,14 @@
     }
 
     /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 480px) {
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      footer { padding: 40px 20px 24px; }
+    }
+    
     @media (max-width: 768px) {
       header { padding: 12px 20px; }
       nav { display: none; }
@@ -913,36 +919,39 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="logo-svg">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Vortex Core" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(0,170,255,.5));" />
-      </a>
-      <p>Not for the weak. Built for the fighters who have the street smarts and need the strategic engine to dominate.</p>
+      <p>Not for the weak.<br>Built for fighters who have the street smarts<br>and need the strategic engine to dominate.</p>
     </div>
 
     <div class="footer-links">
-      <h4>Access</h4>
+      <h4>Enter the Vortex</h4>
       <ul>
-        <li><a href="#" onclick="openModal('architect');return false;">The Architect — 24Q</a></li>
-        <li><a href="#" onclick="openModal('hunter');return false;">The Hunter — 40Q</a></li>
-        <li><a href="#vortex-way">The Vortex Way</a></li>
-        <li><a href="#phases">Phases</a></li>
+        <li><a href="#gate" onclick="openModal('architect');return false;">The Architect — 24Q</a></li>
+        <li><a href="#gate" onclick="openModal('hunter');return false;">The Hunter — 40Q</a></li>
       </ul>
     </div>
 
     <div class="footer-links">
-      <h4>System</h4>
+      <h4>Navigate</h4>
       <ul>
-        <li><a href="#">Vortex Vault</a></li>
-        <li><a href="#">PowerWeb</a></li>
-        <li><a href="#">Co-Pilot</a></li>
-        <li><a href="#">WhatsApp Reminder</a></li>
+        <li><a href="#gate">Choose Your Gate</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#testimonials">Results</a></li>
+        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/256761741850" target="_blank">WhatsApp Direct</a></li>
+        <li><a href="https://wa.me/256761741850" target="_blank">+256 761 741 850</a></li>
       </ul>
     </div>
   </div>
 
   <div class="footer-bottom">
     <p>© 2026 Vortex Core — Kampala, Uganda. Confidential Data System.</p>
-    <p style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:.68rem;letter-spacing:.08em;"><a href="terms.html" style="color:rgba(0,170,255,.6);text-decoration:none;" onmouseover="this.style.color='#00aaff'" onmouseout="this.style.color='rgba(0,170,255,.6)')">Terms &amp; Conditions</a></p>
+
     <span class="footer-tagline">— Unlock Your Future —</span>
   </div>
 </footer>
